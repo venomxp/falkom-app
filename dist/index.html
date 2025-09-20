@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Falkom - فالكم</title>
+    <!-- Preload critical background and logo images for instant loading -->
+    <link rel="preload" as="image" href="https://i.postimg.cc/9FcfPsdB/Untitled-design-7.png">
+    <link rel="preload" as="image" href="https://i.postimg.cc/1RGtqyqt/Untitled-design-8.png">
+    <link rel="preload" as="image" href="https://i.imgur.com/HtZli5a.png">
+    <link rel="preload" as="image" href="https://i.imgur.com/N3xZ1vF.png">
+    <script>
+      // Prevents a flash of light theme on page load by setting the dark class immediately.
+      // This makes dark mode the true default theme for the application.
+      if (localStorage.getItem('theme') !== 'light') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <style>
+      /* 
+        CSS Custom Properties for Theming.
+        This allows for a much more robust and readable light theme by defining
+        separate accent colors for light and dark modes.
+      */
+      :root {
+        /* Light Theme (Default) */
+        --brand-accent: #1a1a1a; /* User requested dark color for a modern, high-contrast look */
+        --brand-accent-dark: #000000;
+        --glow-color: rgba(26, 26, 26, 0.25);
+        --glow-color-strong: rgba(26, 26, 26, 0.5);
+        --primary-button-text-color: #ffffff; /* White text for primary buttons in light mode */
+      }
+      .dark {
+        /* Dark Theme Overrides */
+        --brand-accent: #c4b5fd; /* The original light lavender, great on dark backgrounds */
+        --brand-accent-dark: #a78bfa;
+        --glow-color: rgba(196, 181, 253, 0.4);
+        --glow-color-strong: rgba(196, 181, 253, 0.8);
+        --primary-button-text-color: #1A1A1A; /* Dark text for primary buttons in dark mode */
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'brand-dark': '#1A1A1A',
+              'brand-light-dark': '#222222',
+              'brand-accent': 'var(--brand-accent)',
+              'brand-accent-dark': 'var(--brand-accent-dark)',
+              'brand-button-text': 'var(--primary-button-text-color)',
+              'brand-text-light': '#EAEAEA',
+              'brand-border': '#333333',
+              // Light theme colors
+              'brand-light': '#FDFBF7',
+              'brand-light-card': '#FFFFFF',
+              'brand-light-text': '#2D2D2D',
+              'brand-light-border': '#EAEAEA',
+            },
+            fontFamily: {
+              'logo-en': ['"Cinzel Decorative"', 'serif'],
+              'logo-ar': ['Amiri', 'serif'],
+            },
+            keyframes: {
+              'fan-out-left': {
+                '0%, 100%': { transform: 'rotate(5deg) translateX(0)' },
+                '50%': { transform: 'rotate(-20deg) translateX(-50%)' }
+              },
+              'fan-out-center': {
+                '0%, 100%': { transform: 'translateY(5%)' },
+                '50%': { transform: 'translateY(-15%)' }
+              },
+              'fan-out-right': {
+                '0%, 100%': { transform: 'rotate(-5deg) translateX(0)' },
+                '50%': { transform: 'rotate(20deg) translateX(50%)' }
+              },
+              'slide-in-up': {
+                '0%': { transform: 'translateY(50%)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              'pulse-glow': {
+                '0%, 100%': { filter: 'drop-shadow(0 0 10px var(--glow-color))' },
+                '50%': { filter: 'drop-shadow(0 0 20px var(--glow-color-strong))' }
+              },
+            },
+            animation: {
+              'fan-left': 'fan-out-left 1.8s ease-in-out infinite',
+              'fan-center': 'fan-out-center 1.8s ease-in-out infinite',
+              'fan-right': 'fan-out-right 1.8s ease-in-out infinite',
+              'slide-in-up': 'slide-in-up 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+              'pulse-glow': 'pulse-glow 2.5s ease-in-out infinite',
+            },
+            dropShadow: {
+              'glow': '0 0 10px var(--glow-color)',
+            }
+          }
+        }
+      }
+    </script>
+    <script>
+      // Polyfill for the 'process' object to ensure compatibility in browser environments
+      // where it's not natively available. This allows the app to access environment
+      // variables like `process.env.API_KEY` which are expected to be injected by the
+      // execution environment.
+      if (typeof window.process === 'undefined') {
+        window.process = { env: {} };
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cinzel+Decorative:wght@700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Tajawal', sans-serif;
+        /* Disable text selection for a more app-like feel */
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10+ and Edge */
+        user-select: none; /* Standard syntax */
+        /* Disable tap highlight color for a native feel */
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0",
+    "vite": "https://aistudiocdn.com/vite@^7.1.5",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.2"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/falkom-app/assets/index-Deg_-OgG.js"></script>
+</head>
+  <body class="bg-brand-light text-brand-light-text dark:bg-brand-dark dark:text-brand-text-light transition-colors duration-300">
+    <div id="root"></div>
+  </body>
+</html>
